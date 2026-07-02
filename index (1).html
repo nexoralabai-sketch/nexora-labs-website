@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexora Labs AI — Your Global Technology Execution Partner</title>
+<meta name="description" content="Nexora Labs AI builds dedicated offshore teams for US businesses. Staff augmentation, AI development, IT consulting, and content services from Lahore, Pakistan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0D1B2E;
+  --navy-deep:#081221;
+  --navy-card:#12233B;
+  --navy-line:rgba(201,160,64,.14);
+  --gold:#C9A040;
+  --gold-bright:#E3C06A;
+  --purple:#4A2882;
+  --purple-glow:#6E42B8;
+  --ink:#EAF0F8;
+  --ink-dim:#9FB0C6;
+  --radius:14px;
+  --ease:cubic-bezier(.22,.9,.24,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--navy);
+  color:var(--ink);
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.brand{font-family:'Montserrat',sans-serif}
+::selection{background:var(--purple);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+
+/* ---------- Utility ---------- */
+.wrap{width:min(1160px,92%);margin:0 auto}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-size:.78rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.1rem;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold);display:inline-block}
+.section{padding:7.5rem 0;position:relative}
+.section-title{
+  font-size:clamp(1.9rem,4vw,2.8rem);
+  font-weight:700;line-height:1.15;letter-spacing:-.01em;
+  max-width:640px;margin-bottom:1rem;
+}
+.section-sub{color:var(--ink-dim);max-width:560px;font-size:1.05rem;margin-bottom:3.2rem}
+.gold{color:var(--gold)}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}
+.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+
+/* ---------- Nav ---------- */
+header{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  transition:background .4s,box-shadow .4s,padding .4s;
+  padding:1.4rem 0;
+}
+header.scrolled{
+  background:rgba(8,18,33,.88);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--navy-line);
+  padding:.85rem 0;
+}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:.7rem;font-weight:800;font-size:1.08rem;letter-spacing:.02em}
+.brand-mark{
+  width:36px;height:36px;flex:none;display:grid;place-items:center;
+  border:1.5px solid var(--gold);border-radius:9px;transform:rotate(45deg);
+}
+.brand-mark span{transform:rotate(-45deg);color:var(--gold);font-weight:800;font-size:1rem}
+.brand small{display:block;font-family:'Inter';font-weight:500;font-size:.62rem;letter-spacing:.32em;color:var(--gold);text-transform:uppercase}
+.nav-links{display:flex;gap:2.2rem;align-items:center;list-style:none}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--ink-dim);transition:color .25s;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1.5px;background:var(--gold);transition:width .3s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  border:1px solid var(--gold);color:var(--gold)!important;
+  padding:.55rem 1.3rem;border-radius:100px;font-weight:600;
+  transition:background .3s,color .3s;
+}
+.nav-cta:hover{background:var(--gold);color:var(--navy-deep)!important}
+.nav-cta::after{display:none}
+.burger{display:none;background:none;border:0;cursor:pointer;width:40px;height:40px;position:relative;z-index:60}
+.burger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px auto;transition:.35s var(--ease)}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ---------- Hero ---------- */
+.hero{
+  min-height:100vh;display:flex;align-items:center;position:relative;
+  background:radial-gradient(ellipse 80% 60% at 70% 20%,rgba(74,40,130,.35),transparent 60%),
+             radial-gradient(ellipse 60% 50% at 15% 85%,rgba(201,160,64,.10),transparent 65%),
+             var(--navy-deep);
+  overflow:hidden;
+}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-grid-lines{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(201,160,64,.045) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(201,160,64,.045) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black 30%,transparent 75%);
+}
+.hero-inner{position:relative;z-index:2;padding:9rem 0 6rem}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.55rem;
+  border:1px solid var(--navy-line);border-radius:100px;
+  padding:.45rem 1.1rem;font-size:.8rem;color:var(--ink-dim);
+  background:rgba(13,27,46,.5);backdrop-filter:blur(6px);
+  margin-bottom:1.8rem;
+}
+.hero-tag i{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero h1{
+  font-size:clamp(2.5rem,6.2vw,4.6rem);
+  font-weight:800;line-height:1.06;letter-spacing:-.02em;
+  max-width:820px;margin-bottom:1.6rem;
+}
+.hero h1 .shine{
+  background:linear-gradient(100deg,var(--gold) 20%,var(--gold-bright) 45%,var(--gold) 70%);
+  background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shine 5s linear infinite;
+}
+@keyframes shine{to{background-position:200% center}}
+.hero p{color:var(--ink-dim);font-size:clamp(1.05rem,1.6vw,1.25rem);max-width:560px;margin-bottom:2.6rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.65rem;
+  font-family:'Montserrat';font-weight:700;font-size:.95rem;letter-spacing:.04em;
+  padding:1rem 2.2rem;border-radius:100px;cursor:pointer;border:0;
+  transition:transform .3s var(--ease),box-shadow .3s;
+  position:relative;overflow:hidden;
+}
+.btn-gold{
+  background:linear-gradient(120deg,var(--gold),var(--gold-bright) 60%,var(--gold));
+  color:var(--navy-deep);
+  box-shadow:0 8px 30px rgba(201,160,64,.28);
+}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(201,160,64,.4)}
+.btn-ghost{border:1px solid rgba(234,240,248,.22);color:var(--ink);background:transparent;margin-left:.9rem}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+.btn svg{transition:transform .3s}
+.btn:hover svg{transform:translateX(4px)}
+.hero-stats{display:flex;gap:3rem;margin-top:4.2rem;flex-wrap:wrap}
+.hero-stats div strong{display:block;font-family:'Montserrat';font-size:1.7rem;font-weight:700;color:var(--gold)}
+.hero-stats div span{font-size:.85rem;color:var(--ink-dim)}
+.scroll-hint{
+  position:absolute;left:50%;bottom:2.2rem;transform:translateX(-50%);
+  z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  color:var(--ink-dim);font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;
+}
+.scroll-hint::after{
+  content:"";width:1px;height:44px;
+  background:linear-gradient(var(--gold),transparent);
+  animation:drip 2s var(--ease) infinite;
+}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- Services ---------- */
+#services{background:var(--navy)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem}
+.card{
+  background:linear-gradient(160deg,var(--navy-card),rgba(18,35,59,.5));
+  border:1px solid var(--navy-line);
+  border-radius:var(--radius);
+  padding:2.3rem 1.9rem;
+  position:relative;overflow:hidden;
+  transition:transform .45s var(--ease),border-color .45s,box-shadow .45s;
+}
+.card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(201,160,64,.09),transparent 45%);
+  opacity:0;transition:opacity .4s;
+}
+.card:hover{transform:translateY(-8px);border-color:rgba(201,160,64,.4);box-shadow:0 22px 50px rgba(0,0,0,.4)}
+.card:hover::before{opacity:1}
+.card-icon{
+  width:54px;height:54px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(140deg,rgba(74,40,130,.55),rgba(74,40,130,.15));
+  border:1px solid rgba(110,66,184,.4);margin-bottom:1.5rem;
+  transition:transform .45s var(--ease);
+}
+.card:hover .card-icon{transform:scale(1.08) rotate(-4deg)}
+.card-icon svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.18rem;font-weight:700;margin-bottom:.7rem;position:relative}
+.card p{color:var(--ink-dim);font-size:.95rem;position:relative}
+.card-link{
+  display:inline-flex;align-items:center;gap:.4rem;margin-top:1.3rem;
+  font-size:.85rem;font-weight:600;color:var(--gold);position:relative;
+}
+.card-link svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .3s}
+.card:hover .card-link svg{transform:translateX(4px)}
+
+/* ---------- About ---------- */
+#about{background:var(--navy-deep);overflow:hidden}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:5rem;align-items:center}
+.about-text p{color:var(--ink-dim);font-size:1.08rem;margin-bottom:1.4rem}
+.about-text .lead{color:var(--ink);font-size:1.22rem;font-weight:500}
+.founder{
+  display:flex;align-items:center;gap:1rem;margin-top:2.2rem;
+  padding-top:2rem;border-top:1px solid var(--navy-line);
+}
+.founder-avatar{
+  width:52px;height:52px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:linear-gradient(140deg,var(--purple),var(--purple-glow));
+  font-family:'Montserrat';font-weight:700;font-size:1.05rem;color:#fff;
+  border:2px solid rgba(201,160,64,.5);
+}
+.founder strong{display:block;font-family:'Montserrat';font-weight:700}
+.founder span{font-size:.85rem;color:var(--ink-dim)}
+.founder a{color:var(--gold);font-size:.85rem}
+.about-visual{position:relative;aspect-ratio:1/1.05;min-height:340px}
+.orbit-core{
+  position:absolute;inset:0;margin:auto;width:170px;height:170px;
+  border-radius:26px;transform:rotate(45deg);
+  background:linear-gradient(140deg,rgba(74,40,130,.7),rgba(13,27,46,.9));
+  border:1px solid rgba(201,160,64,.45);
+  display:grid;place-items:center;
+  box-shadow:0 0 80px rgba(110,66,184,.35), inset 0 0 40px rgba(74,40,130,.5);
+  animation:coreFloat 6s ease-in-out infinite;
+}
+.orbit-core span{transform:rotate(-45deg);font-family:'Montserrat';font-weight:800;font-size:2.4rem;color:var(--gold)}
+@keyframes coreFloat{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(-8px,8px)}}
+.ring{position:absolute;inset:0;margin:auto;border-radius:50%;border:1px dashed rgba(201,160,64,.25)}
+.ring.r1{width:290px;height:290px;animation:spin 26s linear infinite}
+.ring.r2{width:410px;height:410px;animation:spin 44s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sat{
+  position:absolute;top:-9px;left:calc(50% - 9px);width:18px;height:18px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 16px rgba(201,160,64,.8);
+}
+.ring.r2 .sat{background:var(--purple-glow);box-shadow:0 0 16px rgba(110,66,184,.9)}
+.about-chips{position:absolute;inset:0;pointer-events:none}
+.chip{
+  position:absolute;padding:.5rem 1rem;border-radius:100px;font-size:.75rem;font-weight:600;
+  background:rgba(13,27,46,.85);border:1px solid var(--navy-line);color:var(--ink-dim);
+  backdrop-filter:blur(4px);animation:chipFloat 5s ease-in-out infinite;
+}
+.chip:nth-child(1){top:8%;left:4%;animation-delay:.4s;color:var(--gold);border-color:rgba(201,160,64,.35)}
+.chip:nth-child(2){top:16%;right:2%;animation-delay:1.3s}
+.chip:nth-child(3){bottom:14%;left:0;animation-delay:2.1s}
+.chip:nth-child(4){bottom:6%;right:8%;animation-delay:.9s;color:var(--gold-bright);border-color:rgba(201,160,64,.35)}
+@keyframes chipFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ---------- Why Us ---------- */
+#why{background:var(--navy)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0;border:1px solid var(--navy-line);border-radius:var(--radius);overflow:hidden}
+.why-item{
+  padding:2.6rem 2.1rem;border:0 solid var(--navy-line);
+  background:var(--navy-deep);position:relative;
+  transition:background .45s;
+}
+.why-item:not(:last-child){border-right-width:1px}
+.why-item::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--purple-glow));
+  transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);
+}
+.why-item:hover{background:var(--navy-card)}
+.why-item:hover::after{transform:scaleX(1)}
+.why-num{
+  font-family:'Montserrat';font-weight:800;font-size:.85rem;letter-spacing:.15em;
+  color:var(--purple-glow);margin-bottom:1.4rem;display:block;
+}
+.why-item h3{font-size:1.12rem;font-weight:700;margin-bottom:.65rem}
+.why-item h3 svg{width:19px;height:19px;stroke:var(--gold);fill:none;stroke-width:2;vertical-align:-3px;margin-right:.5rem}
+.why-item p{color:var(--ink-dim);font-size:.93rem}
+
+/* ---------- Contact ---------- */
+#contact{
+  background:radial-gradient(ellipse 70% 80% at 85% 10%,rgba(74,40,130,.3),transparent 55%),var(--navy-deep);
+}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:4.5rem;align-items:start}
+.contact-info h2{font-size:clamp(1.9rem,3.6vw,2.6rem);font-weight:700;line-height:1.15;margin-bottom:1rem}
+.contact-info>p{color:var(--ink-dim);margin-bottom:2.4rem;max-width:420px}
+.contact-line{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.6rem}
+.contact-line .ic{
+  width:44px;height:44px;flex:none;border-radius:11px;display:grid;place-items:center;
+  border:1px solid var(--navy-line);background:var(--navy-card);
+}
+.contact-line .ic svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.contact-line strong{display:block;font-family:'Montserrat';font-size:.92rem;font-weight:700}
+.contact-line a,.contact-line span{color:var(--ink-dim);font-size:.92rem;transition:color .25s}
+.contact-line a:hover{color:var(--gold)}
+.form-card{
+  background:linear-gradient(160deg,var(--navy-card),rgba(18,35,59,.6));
+  border:1px solid var(--navy-line);border-radius:18px;padding:2.6rem;
+  box-shadow:0 30px 70px rgba(0,0,0,.35);
+}
+.field{margin-bottom:1.3rem}
+.field label{display:block;font-size:.82rem;font-weight:600;letter-spacing:.05em;color:var(--ink-dim);margin-bottom:.5rem;text-transform:uppercase}
+.field input,.field textarea{
+  width:100%;background:rgba(8,18,33,.6);border:1px solid rgba(159,176,198,.18);
+  border-radius:10px;padding:.9rem 1.1rem;color:var(--ink);font-family:'Inter';font-size:.97rem;
+  transition:border-color .3s,box-shadow .3s;
+}
+.field input:focus,.field textarea:focus{
+  outline:none;border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(201,160,64,.15);
+}
+.field textarea{min-height:130px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.form-note{font-size:.82rem;color:var(--ink-dim);margin-top:1rem;text-align:center}
+.form-success{
+  display:none;text-align:center;padding:3rem 1rem;
+}
+.form-success.show{display:block}
+.form-success .tick{
+  width:64px;height:64px;margin:0 auto 1.4rem;border-radius:50%;
+  border:2px solid var(--gold);display:grid;place-items:center;
+}
+.form-success .tick svg{width:30px;height:30px;stroke:var(--gold);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.form-success h3{font-size:1.3rem;margin-bottom:.5rem}
+.form-success p{color:var(--ink-dim);font-size:.95rem}
+
+/* ---------- Footer ---------- */
+footer{background:var(--navy-deep);border-top:1px solid var(--navy-line);padding:2.6rem 0}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.foot p{font-size:.88rem;color:var(--ink-dim)}
+.foot a{color:var(--gold);font-size:.88rem;transition:color .25s}
+.foot a:hover{color:var(--gold-bright)}
+
+/* ---------- Responsive ---------- */
+@media(max-width:960px){
+  .about-grid{grid-template-columns:1fr;gap:3.5rem}
+  .about-visual{max-width:420px;margin:0 auto;width:100%}
+  .contact-grid{grid-template-columns:1fr;gap:3rem}
+  .why-item:not(:last-child){border-right-width:0;border-bottom-width:1px}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .why-item:nth-child(odd){border-right-width:1px}
+  .why-item:nth-child(3),.why-item:nth-child(4){border-bottom-width:0}
+}
+@media(max-width:720px){
+  .section{padding:5rem 0}
+  .burger{display:block}
+  .nav-links{
+    position:fixed;inset:0;background:rgba(8,18,33,.97);
+    flex-direction:column;justify-content:center;gap:2.2rem;
+    opacity:0;pointer-events:none;transition:opacity .35s;
+    backdrop-filter:blur(10px);
+  }
+  .nav-links.open{opacity:1;pointer-events:auto}
+  .nav-links a{font-size:1.25rem}
+  .why-grid{grid-template-columns:1fr}
+  .why-item:nth-child(odd){border-right-width:0}
+  .why-item:not(:last-child){border-bottom-width:1px}
+  .why-item:nth-child(3){border-bottom-width:1px}
+  .form-row{grid-template-columns:1fr}
+  .form-card{padding:1.8rem}
+  .btn-ghost{margin-left:0;margin-top:.9rem}
+  .hero-stats{gap:1.8rem}
+  .ring.r2{width:320px;height:320px}
+  .scroll-hint{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#hero" class="brand">
+      <span class="brand-mark"><span>N</span></span>
+      <span>NEXORA<small>Labs AI</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-tag reveal in"><i></i> Offshore teams · Built for US businesses</div>
+    <h1 class="reveal in">Your Global Technology <span class="shine">Execution Partner</span></h1>
+    <p class="reveal in d1">We build dedicated offshore teams for US businesses — so you can scale without the overhead.</p>
+    <div class="reveal in d2">
+      <a href="#contact" class="btn btn-gold">Get In Touch
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#services" class="btn btn-ghost">Explore Services</a>
+    </div>
+    <div class="hero-stats reveal in d3">
+      <div><strong>US-First</strong><span>Timezone-aligned delivery</span></div>
+      <div><strong>Fully Managed</strong><span>HR, payroll &amp; performance</span></div>
+      <div><strong>Vetted Talent</strong><span>Screened &amp; verified pros</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section" id="services">
+  <div class="wrap">
+    <span class="eyebrow reveal">What we do</span>
+    <h2 class="section-title reveal">Services engineered for growth</h2>
+    <p class="section-sub reveal d1">Four disciplines, one goal: give your business the capacity to move faster without the cost of building in-house.</p>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Staff Augmentation</h3>
+        <p>Dedicated remote professionals for your team — embedded, accountable, and working your hours.</p>
+        <a href="#contact" class="card-link">Build your team <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="card reveal d1">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>
+        </div>
+        <h3>AI &amp; Software Development</h3>
+        <p>Custom AI solutions and software products, designed and shipped by senior engineering talent.</p>
+        <a href="#contact" class="card-link">Start a project <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7l8.7 5 8.7-5M12 22V12"/></svg>
+        </div>
+        <h3>IT Consulting</h3>
+        <p>Strategy and technology advisory for US businesses — from roadmaps to vendor selection.</p>
+        <a href="#contact" class="card-link">Book advisory <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="card reveal d3">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <h3>Social Media &amp; Content</h3>
+        <p>Full-service content creation and management that keeps your brand present and consistent.</p>
+        <a href="#contact" class="card-link">Grow your reach <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="wrap about-grid">
+    <div class="about-text">
+      <span class="eyebrow reveal">Who we are</span>
+      <h2 class="section-title reveal">Independent by design, global by execution</h2>
+      <p class="lead reveal d1">Nexora Labs AI is an independent IT firm founded by Qasim Shariq, providing offshore talent and technology services to US-based businesses.</p>
+      <p class="reveal d2">We specialize in placing dedicated remote resources in real estate, technology, and service industries — professionals who work as a true extension of your team, not a distant vendor.</p>
+      <div class="founder reveal d3">
+        <div class="founder-avatar">QS</div>
+        <div>
+          <strong>Qasim Shariq</strong>
+          <span>Founder, Nexora Labs AI · </span>
+          <a href="mailto:nexoralabsai@gmail.com">nexoralabsai@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual reveal d2" aria-hidden="true">
+      <div class="ring r1"><span class="sat"></span></div>
+      <div class="ring r2"><span class="sat"></span></div>
+      <div class="orbit-core"><span>N</span></div>
+      <div class="about-chips">
+        <span class="chip">Real Estate</span>
+        <span class="chip">Technology</span>
+        <span class="chip">Service Industries</span>
+        <span class="chip">US Clients</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY US ============ -->
+<section class="section" id="why">
+  <div class="wrap">
+    <span class="eyebrow reveal">Why Nexora</span>
+    <h2 class="section-title reveal">The offshore model, done properly</h2>
+    <p class="section-sub reveal d1">Offshore only works when quality, management, and accountability are built in. That's exactly what we've built.</p>
+    <div class="why-grid reveal d1">
+      <div class="why-item">
+        <span class="why-num">01</span>
+        <h3><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Vetted Professionals</h3>
+        <p>Every resource is screened and verified before they ever join your team.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num">02</span>
+        <h3><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Full Management</h3>
+        <p>We handle HR, payroll, and performance — you get the output, not the admin.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num">03</span>
+        <h3><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>US-Focused</h3>
+        <p>We work in your timezone and understand your market from day one.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num">04</span>
+        <h3><svg viewBox="0 0 24 24"><path d="M12 15a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"/><path d="M8.2 13.9L7 23l5-3 5 3-1.2-9.1"/></svg>Guaranteed Results</h3>
+        <p>Weekly reports and a replacement guarantee keep every engagement on track.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <span class="eyebrow reveal">Contact</span>
+      <h2 class="reveal">Let's build your offshore team</h2>
+      <p class="reveal d1">Tell us what you need — a single resource or an entire department — and we'll come back with a plan within one business day.</p>
+      <div class="contact-line reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+        <div><strong>Email</strong><a href="mailto:nexoralabsai@gmail.com">nexoralabsai@gmail.com</a></div>
+      </div>
+      <div class="contact-line reveal d3">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><strong>Location</strong><span>Lahore, Pakistan — serving clients across the United States</span></div>
+      </div>
+      <div class="contact-line reveal d4">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div><strong>Working hours</strong><span>Aligned to US time zones — EST to PST</span></div>
+      </div>
+    </div>
+    <div class="form-card reveal d2">
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="fName">Name</label>
+            <input type="text" id="fName" name="name" placeholder="Jane Smith" required>
+          </div>
+          <div class="field">
+            <label for="fEmail">Email</label>
+            <input type="email" id="fEmail" name="email" placeholder="jane@company.com" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="fCompany">Company</label>
+          <input type="text" id="fCompany" name="company" placeholder="Your company name">
+        </div>
+        <div class="field">
+          <label for="fMsg">How can we help?</label>
+          <textarea id="fMsg" name="message" placeholder="Tell us about the roles or project you have in mind…" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center">Send Message
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+        <p class="form-note">Prefer email? Write to us at <a href="mailto:nexoralabsai@gmail.com" class="gold">nexoralabsai@gmail.com</a></p>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="tick"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <h3>Message ready to send</h3>
+        <p>Your email app should open with the message pre-filled. If it didn't, email us directly at <a href="mailto:nexoralabsai@gmail.com" class="gold">nexoralabsai@gmail.com</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot">
+    <p>© 2026 Nexora Labs AI. All rights reserved.</p>
+    <a href="mailto:nexoralabsai@gmail.com">nexoralabsai@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+/* ================= 3D floating geometric shapes (pure canvas) ================= */
+(function(){
+  const canvas = document.getElementById('scene');
+  const ctx = canvas.getContext('2d');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W, H, DPR;
+
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = W * DPR; canvas.height = H * DPR;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  /* --- polyhedra definitions (unit vertices + edges) --- */
+  const t = (1 + Math.sqrt(5)) / 2;
+  const SHAPES = {
+    tetra: {
+      v: [[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]],
+      e: [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]]
+    },
+    octa: {
+      v: [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]],
+      e: [[0,2],[0,3],[0,4],[0,5],[1,2],[1,3],[1,4],[1,5],[2,4],[2,5],[3,4],[3,5]]
+    },
+    cube: {
+      v: [[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]],
+      e: [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]]
+    },
+    icosa: (function(){
+      const v = [
+        [-1,t,0],[1,t,0],[-1,-t,0],[1,-t,0],
+        [0,-1,t],[0,1,t],[0,-1,-t],[0,1,-t],
+        [t,0,-1],[t,0,1],[-t,0,-1],[-t,0,1]
+      ].map(p=>{const m=Math.hypot(...p);return p.map(c=>c/m);});
+      const e=[]; 
+      for(let i=0;i<v.length;i++)for(let j=i+1;j<v.length;j++){
+        const d=Math.hypot(v[i][0]-v[j][0],v[i][1]-v[j][1],v[i][2]-v[j][2]);
+        if(d<1.1)e.push([i,j]);
+      }
+      return {v,e};
+    })()
+  };
+
+  const GOLD='201,160,64', PURPLE='110,66,184', INKBLUE='120,150,200';
+
+  /* --- floating shape instances --- */
+  const isMobile = window.innerWidth < 720;
+  const shapes = [];
+  const defs = isMobile
+    ? [ {k:'icosa',x:.78,y:.30,s:90, c:GOLD,   sp:.35},
+        {k:'octa', x:.15,y:.72,s:55, c:PURPLE, sp:.5},
+        {k:'tetra',x:.85,y:.80,s:42, c:GOLD,   sp:.6} ]
+    : [ {k:'icosa',x:.76,y:.38,s:150,c:GOLD,   sp:.30},
+        {k:'octa', x:.90,y:.72,s:70, c:PURPLE, sp:.55},
+        {k:'cube', x:.12,y:.78,s:60, c:PURPLE, sp:.42},
+        {k:'tetra',x:.58,y:.14,s:48, c:GOLD,   sp:.65},
+        {k:'octa', x:.30,y:.24,s:38, c:INKBLUE,sp:.5},
+        {k:'cube', x:.65,y:.85,s:44, c:INKBLUE,sp:.38} ];
+
+  defs.forEach((d,i)=>{
+    shapes.push({
+      def: SHAPES[d.k], px:d.x, py:d.y, size:d.s, color:d.c, speed:d.sp,
+      rx: Math.random()*Math.PI*2, ry: Math.random()*Math.PI*2, rz: Math.random()*Math.PI*2,
+      drift: Math.random()*Math.PI*2, driftAmp: 10 + Math.random()*14, phase: i*1.7
+    });
+  });
+
+  /* --- particle field --- */
+  const P_COUNT = isMobile ? 34 : 70;
+  const particles = [];
+  for(let i=0;i<P_COUNT;i++){
+    particles.push({
+      x: Math.random(), y: Math.random(),
+      z: .3 + Math.random()*.7,
+      vx: (Math.random()-.5)*.00022, vy: (Math.random()-.5)*.00022,
+      r: .7 + Math.random()*1.7,
+      c: Math.random()<.35 ? GOLD : (Math.random()<.5 ? PURPLE : INKBLUE),
+      tw: Math.random()*Math.PI*2
+    });
+  }
+
+  /* --- mouse parallax --- */
+  let mx=0, my=0, tmx=0, tmy=0;
+  window.addEventListener('pointermove', e=>{
+    tmx = (e.clientX / window.innerWidth - .5);
+    tmy = (e.clientY / window.innerHeight - .5);
+  }, {passive:true});
+
+  function rotate(p, rx, ry, rz){
+    let [x,y,z]=p;
+    let c=Math.cos(rx), s=Math.sin(rx), y1=y*c-z*s, z1=y*s+z*c; y=y1; z=z1;
+    c=Math.cos(ry); s=Math.sin(ry); const x1=x*c+z*s, z2=-x*s+z*c; x=x1; z=z2;
+    c=Math.cos(rz); s=Math.sin(rz); const x2=x*c-y*s, y2=x*s+y*c;
+    return [x2,y2,z];
+  }
+
+  const FOV = 4.2;
+  function project(p, size){
+    const scale = FOV/(FOV + p[2]);
+    return [p[0]*size*scale, p[1]*size*scale, scale];
+  }
+
+  let last = 0;
+  function frame(now){
+    const dt = Math.min((now - last)/1000, .05); last = now;
+    mx += (tmx - mx)*.04; my += (tmy - my)*.04;
+    ctx.clearRect(0,0,W,H);
+    const time = now/1000;
+
+    /* particles */
+    for(const p of particles){
+      p.x += p.vx; p.y += p.vy;
+      if(p.x<-.02)p.x=1.02; if(p.x>1.02)p.x=-.02;
+      if(p.y<-.02)p.y=1.02; if(p.y>1.02)p.y=-.02;
+      const px = (p.x + mx*.03*p.z)*W;
+      const py = (p.y + my*.03*p.z)*H;
+      const a = .18 + .3*p.z + .18*Math.sin(time*1.4 + p.tw);
+      ctx.beginPath();
+      ctx.arc(px, py, p.r*p.z, 0, 6.2832);
+      ctx.fillStyle = `rgba(${p.c},${a})`;
+      ctx.fill();
+    }
+
+    /* connecting lines between near particles (subtle constellation) */
+    ctx.lineWidth = .6;
+    const maxD = (isMobile?90:130);
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const a=particles[i], b=particles[j];
+        const dx=(a.x-b.x)*W, dy=(a.y-b.y)*H;
+        const d=Math.hypot(dx,dy);
+        if(d<maxD){
+          ctx.beginPath();
+          ctx.moveTo(a.x*W, a.y*H); ctx.lineTo(b.x*W, b.y*H);
+          ctx.strokeStyle = `rgba(${GOLD},${(1-d/maxD)*.09})`;
+          ctx.stroke();
+        }
+      }
+    }
+
+    /* polyhedra */
+    for(const s of shapes){
+      if(!reduced){
+        s.rx += dt*.25*s.speed; s.ry += dt*.4*s.speed; s.rz += dt*.15*s.speed;
+        s.drift += dt*.6;
+      }
+      const cx = s.px*W + mx*30*(s.size/150) + Math.sin(s.drift + s.phase)*s.driftAmp;
+      const cy = s.py*H + my*30*(s.size/150) + Math.cos(s.drift*.8 + s.phase)*s.driftAmp;
+
+      const proj = s.def.v.map(v => project(rotate(v, s.rx, s.ry, s.rz), s.size));
+
+      /* glow core */
+      const g = ctx.createRadialGradient(cx,cy,0,cx,cy,s.size*1.3);
+      g.addColorStop(0, `rgba(${s.color},.10)`);
+      g.addColorStop(1, `rgba(${s.color},0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(cx,cy,s.size*1.3,0,6.2832); ctx.fill();
+
+      /* edges with depth-based alpha */
+      for(const [a,b] of s.def.e){
+        const pa=proj[a], pb=proj[b];
+        const depth=(pa[2]+pb[2])/2;
+        ctx.beginPath();
+        ctx.moveTo(cx+pa[0], cy+pa[1]);
+        ctx.lineTo(cx+pb[0], cy+pb[1]);
+        ctx.strokeStyle = `rgba(${s.color},${.14 + depth*.42})`;
+        ctx.lineWidth = .8 + depth*1.1;
+        ctx.stroke();
+      }
+      /* vertices */
+      for(const p of proj){
+        ctx.beginPath();
+        ctx.arc(cx+p[0], cy+p[1], 1.1+p[2]*1.6, 0, 6.2832);
+        ctx.fillStyle = `rgba(${s.color},${.35+p[2]*.5})`;
+        ctx.fill();
+      }
+    }
+
+    if(!reduced) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  /* for reduced motion: render one static frame */
+  if(reduced){ requestAnimationFrame(frame); }
+})();
+
+/* ================= Nav: scrolled state + mobile menu ================= */
+(function(){
+  const header = document.getElementById('header');
+  const burger = document.getElementById('burger');
+  const links = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', ()=>{
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, {passive:true});
+
+  burger.addEventListener('click', ()=>{
+    const open = links.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
+    links.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }));
+})();
+
+/* ================= Scroll reveal ================= */
+(function(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+})();
+
+/* ================= Card cursor glow ================= */
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('pointermove', e=>{
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+});
+
+/* ================= Contact form → mailto ================= */
+(function(){
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', e=>{
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const company = form.company.value.trim();
+    const msg = form.message.value.trim();
+    if(!name || !email || !msg){
+      form.querySelectorAll('[required]').forEach(f=>{
+        f.style.borderColor = f.value.trim() ? '' : '#c96040';
+      });
+      return;
+    }
+    const subject = encodeURIComponent(`Inquiry from ${name}${company ? ' — ' + company : ''}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nCompany: ${company || '—'}\n\n${msg}`);
+    window.location.href = `mailto:nexoralabsai@gmail.com?subject=${subject}&body=${body}`;
+    form.style.display = 'none';
+    success.classList.add('show');
+  });
+})();
+</script>
+</body>
+</html>
